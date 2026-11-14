@@ -1,0 +1,531 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Atoll — Dynamic Island для Windows</title>
+<script src="./vendor/react.js"></script>
+<script src="./vendor/react-dom.js"></script>
+<script src="./support.js"></script>
+<!-- Все стили сайта лежат в style.css -->
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&amp;family=JetBrains+Mono:wght@500&amp;display=swap">
+</helmet>
+
+<div class="page">
+
+  <!-- ===== ШАПКА ===== -->
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Atoll">
+      <span class="brand__mark"><span class="brand__ring"><span class="brand__dot"></span></span></span>
+      <span class="brand__name">Atoll</span>
+    </a>
+    <nav class="site-nav" aria-label="Разделы">
+      <a class="nav-link" href="#features">Возможности</a>
+      <a class="nav-link" href="#new">Что нового</a>
+      <a class="nav-link" href="#themes">Темы</a>
+      <a class="nav-link" href="#privacy">Приватность</a>
+      <a class="nav-link" href="#install">Установка</a>
+      <a class="nav-link" href="https://github.com/Fuwni/dynamic-island-windows">GitHub</a>
+    </nav>
+  </header>
+
+  <!-- ===== ПЕРВЫЙ ЭКРАН ===== -->
+  <section class="hero" id="top">
+    <div class="hero__layout">
+
+      <div class="hero__text">
+        <div class="badge"><span class="badge__dot"></span>Обновление 1.6 · Dynamic Island для Windows</div>
+        <h1 class="hero__title">Atoll</h1>
+        <p class="hero__tagline"><span class="tagline--gray">Твой размер.</span> <span class="tagline--green">Твои</span> <span class="tagline--amber">правила.</span></p>
+        <p class="hero__lead">Остров как на iPhone, только на компьютере. Музыка со словами песен, погода, таймеры, скриншоты с распознаванием текста, чат с нейросетями, заметки, календарь и маленький персонаж, который живёт в пилюле.</p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="https://github.com/Fuwni/dynamic-island-windows/releases/latest">
+            <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#07080c" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"></path><path d="M7 11l5 5 5-5"></path><path d="M5 20h14"></path></svg>
+            Скачать для Windows
+          </a>
+          <a class="btn btn--ghost" href="https://github.com/Fuwni/dynamic-island-windows">
+            <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f4f5f7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 6l-6 6 6 6"></path><path d="M16 6l6 6-6 6"></path></svg>
+            Исходный код
+          </a>
+        </div>
+        <p class="hero__meta">Бесплатно · Windows 10 и 11 · Открытый код, MIT</p>
+      </div>
+
+      <!-- Макеты острова справа от заголовка -->
+      <div class="hero__demo">
+        <div class="notice-row float-a">
+          <div class="notice">
+            <span class="notice__icon notice__icon--caps">abc</span>
+            <span class="notice__text">Caps Lock включён</span>
+          </div>
+          <div class="notice notice--lang">
+            <span class="notice__icon notice__icon--kbd">
+              <svg width="20" height="14" viewBox="0 0 20 14" fill="none" stroke="#c6cad2" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><rect x="1" y="1" width="18" height="12" rx="2.5"></rect><path d="M5 5h.01M9 5h.01M13 5h.01M6 9h8"></path></svg>
+            </span>
+            <span class="notice__lang"><span class="notice__lang-code">EN</span><span class="notice__lang-name">English</span></span>
+          </div>
+        </div>
+
+        <div class="island float-b">
+          <span class="island__face" aria-hidden="true"><span class="island__eye"></span><span class="island__eye"></span></span>
+          <span class="island__cover" aria-hidden="true"></span>
+          <span class="island__time">21:16</span>
+          <span class="island__bars" aria-hidden="true"><span class="island__bar"></span><span class="island__bar"></span><span class="island__bar"></span><span class="island__bar"></span></span>
+        </div>
+
+        <div class="panel">
+          <div class="panel__bar">
+            <span class="panel__pages" aria-hidden="true"><span class="panel__page panel__page--active"></span><span class="panel__page"></span><span class="panel__page"></span><span class="panel__page"></span></span>
+            <span class="panel__title">Настройки</span>
+            <span class="panel__time">21:16</span>
+          </div>
+          <div class="panel__body">
+            <div class="panel__nav">
+              <span class="panel__nav-item">Внешний вид</span>
+              <span class="panel__nav-item">Персонаж</span>
+              <span class="panel__nav-item">Главная</span>
+              <span class="panel__nav-item panel__nav-item--active">Поведение</span>
+              <span class="panel__nav-item">Действия</span>
+              <span class="panel__nav-item">ИИ-агенты</span>
+            </div>
+            <div class="panel__settings">
+              <sc-for list="{{settingsRows}}" as="r" hint-placeholder-count="6">
+                <div class="setting">
+                  <span class="setting__label">{{r.label}}</span>
+                  <span class="toggle {{r.state}}"><span class="toggle__knob"></span></span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chip-row">
+      <sc-for list="{{heroChips}}" as="c" hint-placeholder-count="6">
+        <span class="chip"><span class="dot dot--{{c.tone}}"></span>{{c.label}}</span>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- ===== ДЕМО РАЗМЕРА ОСТРОВА ===== -->
+  <section class="section">
+    <div class="feature-box size-demo">
+      <div class="size-demo__text">
+        <p class="eyebrow eyebrow--green">Новое в 1.6</p>
+        <h2 class="section__title section__title--md">Остров под ваш экран</h2>
+        <p class="size-demo__lead">Размер меняется от 80 до 130 процентов. Остров, его тень и окно масштабируются вместе. Подвиньте ползунок и посмотрите.</p>
+
+        <div class="slider">
+          <div class="slider__head">
+            <label class="slider__label" for="size-range">Размер острова</label>
+            <span class="slider__value">{{sizeLabel}}%</span>
+          </div>
+          <!-- value берётся из state.size, поэтому ползунок движется вместе с размером;
+               onInput срабатывает на каждом шаге, а не только при отпускании мыши -->
+          <input id="size-range" class="slider__input" type="range" min="80" max="130" step="1" value="{{sizeValue}}" onInput="{{onSize}}" onChange="{{onSize}}">
+          <div class="slider__scale"><span>80%</span><span>130%</span></div>
+        </div>
+      </div>
+
+      <div class="size-demo__stage">
+        <!-- Масштаб передаётся через CSS-переменную --scale -->
+        <div class="size-demo__pill" style="--scale: {{sizeScale}}">
+          <div class="island">
+            <span class="island__face" aria-hidden="true"><span class="island__eye"></span><span class="island__eye"></span></span>
+            <span class="island__cover" aria-hidden="true"></span>
+            <span class="island__time">21:16</span>
+            <span class="island__bars" aria-hidden="true"><span class="island__bar"></span><span class="island__bar"></span><span class="island__bar"></span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ЖИВЫЕ АКТИВНОСТИ ===== -->
+  <section class="section" id="features">
+    <p class="eyebrow eyebrow--amber">В свёрнутом виде</p>
+    <h2 class="section__title section__title--lg">Показывает время и погоду, а когда что-то происходит, оживает</h2>
+    <p class="section__lead">Если активностей несколько, например звонок, музыка и таймер, колесо мыши над пилюлей переключает их. Точки показывают, сколько их сейчас.</p>
+    <div class="card-grid">
+      <sc-for list="{{activities}}" as="a" hint-placeholder-count="6">
+        <div class="card">
+          <div class="card__head"><span class="dot dot--{{a.tone}}"></span><h3 class="card__title">{{a.title}}</h3></div>
+          <p class="card__text">{{a.text}}</p>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- ===== ЧТО НОВОГО ===== -->
+  <section class="section" id="new">
+    <p class="eyebrow eyebrow--violet">Обновления</p>
+    <h2 class="section__title section__title--lg">Что нового</h2>
+    <div class="release-grid">
+      <div class="release release--green">
+        <div class="release__head"><span class="release__version">1.6</span><span class="release__slogan">Твой размер. Твои правила.</span></div>
+        <ul class="release__list">
+          <sc-for list="{{new16}}" as="n" hint-placeholder-count="6">
+            <li class="release__item"><strong>{{n.title}}</strong> {{n.text}}</li>
+          </sc-for>
+        </ul>
+      </div>
+      <div class="release release--blue">
+        <div class="release__head"><span class="release__version">1.5</span><span class="release__slogan">Плавнее. Темы. Codex.</span></div>
+        <ul class="release__list">
+          <sc-for list="{{new15}}" as="n" hint-placeholder-count="6">
+            <li class="release__item"><strong>{{n.title}}</strong> {{n.text}}</li>
+          </sc-for>
+        </ul>
+      </div>
+    </div>
+    <p class="note">Полный список изменений по всем версиям лежит в <a class="link" href="https://github.com/Fuwni/dynamic-island-windows/blob/main/CHANGELOG.md">CHANGELOG.md</a>.</p>
+  </section>
+
+  <!-- ===== СТРАНИЦЫ ОСТРОВА ===== -->
+  <section class="section">
+    <p class="eyebrow eyebrow--rose">В развёрнутом виде</p>
+    <h2 class="section__title section__title--lg">Десять страниц в одном острове</h2>
+    <p class="section__lead">Наведите мышь, и остров раскроется. Уведите, и он свернётся. Перетащите его куда угодно или смахните вверх, чтобы спрятать.</p>
+    <div class="card-grid card-grid--wide">
+      <sc-for list="{{pages}}" as="p" hint-placeholder-count="6">
+        <div class="card card--dark card--page">
+          <h3 class="card__title">{{p.title}}</h3>
+          <p class="card__text">{{p.text}}</p>
+        </div>
+      </sc-for>
+    </div>
+    <p class="note">Ещё есть редактор скриншотов с ручкой, маркером, ластиком, распознаванием и переводом текста. Файл можно перетащить на остров, чтобы поделиться им, сжать в ZIP или конвертировать. В играх и полноэкранном видео остров прячется сам.</p>
+  </section>
+
+  <!-- ===== ТЕМЫ ===== -->
+  <section class="section" id="themes">
+    <div class="themes">
+      <div class="themes__intro">
+        <p class="eyebrow eyebrow--blue">Внешний вид</p>
+        <h2 class="section__title section__title--lg">12 тем и своё фото</h2>
+        <p class="section__lead">Готовые темы меняют цвет, акцент и свечение. Есть онлайн-галерея тем, а фоном острова можно поставить собственную фотографию. Матовое стекло настраивается по оттенку.</p>
+        <p class="note">Тёмная и светлая тема переключаются сочетанием Ctrl + Alt + T.</p>
+      </div>
+      <div class="themes__grid">
+        <sc-for list="{{themes}}" as="t" hint-placeholder-count="12">
+          <div class="theme theme--{{t.slug}} {{t.kind}}">
+            <div class="theme__card"><span class="theme__pill"><span class="theme__dot"></span></span></div>
+            <p class="theme__name">{{t.name}}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ПЕРСОНАЖИ ===== -->
+  <section class="section">
+    <div class="feature-box">
+      <p class="eyebrow eyebrow--amber">Персонажи</p>
+      <h2 class="section__title section__title--md">Маленький житель пилюли</h2>
+      <p class="feature-box__text">Персонаж следит глазами за курсором, моргает, танцует под музыку и засыпает, когда вас нет. Он подпрыгивает от нажатий, радуется включённым переключателям и печатает вместе с вами. Если нажать на него, покажет одну из семи эмоций.</p>
+      <div class="tag-list tag-list--first">
+        <sc-for list="{{characters}}" as="c" hint-placeholder-count="15">
+          <span class="tag">{{c.name}}</span>
+        </sc-for>
+      </div>
+      <p class="subhead">Семь эмоций</p>
+      <div class="tag-list">
+        <sc-for list="{{emotions}}" as="e" hint-placeholder-count="7">
+          <span class="tag tag--emotion">{{e.name}}</span>
+        </sc-for>
+      </div>
+      <p class="feature-box__note">Рисованный режим двигает персонажей покадрово, по 12 кадров в секунду, с чуть дрожащим чернильным контуром.</p>
+    </div>
+  </section>
+
+  <!-- ===== ГОРЯЧИЕ КЛАВИШИ И НЕЙРОСЕТИ ===== -->
+  <section class="section">
+    <div class="duo">
+      <div class="panel-card">
+        <p class="eyebrow eyebrow--green">Горячие клавиши</p>
+        <h2 class="section__title section__title--sm">Всё под рукой</h2>
+        <div class="shortcut-list">
+          <sc-for list="{{shortcuts}}" as="s" hint-placeholder-count="6">
+            <div class="shortcut">
+              <span class="shortcut__action">{{s.action}}</span>
+              <span class="key">{{s.keys}}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <div class="panel-card">
+        <p class="eyebrow eyebrow--violet">Нейросети</p>
+        <h2 class="section__title section__title--sm">Девять ассистентов и два агента</h2>
+        <p class="panel-card__text">В чате прямо на острове работают ChatGPT, Claude, Gemini, DeepSeek, Grok, Perplexity, Copilot, Le Chat и Qwen. Войдите один раз, ключи API не нужны. Кнопка «Больше места» в чате освобождает место для капчи при входе.</p>
+        <p class="panel-card__text panel-card__text--spaced">Если вы пользуетесь Claude Code или Codex CLI, остров покажет их запросы разрешений с кнопками «Разрешить», «Запретить» и «В терминале» и сообщит, когда работа закончена.</p>
+        <p class="panel-card__hint">Подключение: Настройки → ИИ-агенты → Подключить. Если остров закрыт, агент спросит в терминале, как обычно.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ПРИВАТНОСТЬ ===== -->
+  <section class="section" id="privacy">
+    <p class="eyebrow eyebrow--green">Приватность</p>
+    <h2 class="section__title section__title--lg">Ничего не собирает. Телеметрии нет.</h2>
+    <p class="section__lead">Сеть нужна только функциям, которые вы видите. Распознавание текста, QR-коды, запись экрана и буфер обмена работают на вашем компьютере. Пароли из менеджеров паролей в историю буфера не попадают.</p>
+    <div class="table-wrap">
+      <div class="table">
+        <div class="table__row table__row--head"><span>Функция</span><span>Куда</span><span>Что уходит</span></div>
+        <sc-for list="{{privacyRows}}" as="r" hint-placeholder-count="5">
+          <div class="table__row">
+            <span>{{r.feature}}</span>
+            <span class="table__cell--mono">{{r.where}}</span>
+            <span class="table__cell--soft">{{r.what}}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+    <p class="note">Мост для Claude Code защищён секретным ключом, ссылки открываются только по http и https, а встроенный чат не может запускать программы и скачивать скрипты. Подробности описаны в <a class="link" href="https://github.com/Fuwni/dynamic-island-windows/blob/main/SECURITY.md">SECURITY.md</a>.</p>
+  </section>
+
+  <!-- ===== УСТАНОВКА ===== -->
+  <section class="section" id="install">
+    <div class="install">
+      <p class="eyebrow eyebrow--amber">Установка</p>
+      <h2 class="section__title section__title--lg">Две минуты, права администратора не нужны</h2>
+      <div class="steps">
+        <sc-for list="{{steps}}" as="s" hint-placeholder-count="3">
+          <div class="step">
+            <span class="step__num">{{s.n}}</span>
+            <h3 class="step__title">{{s.title}}</h3>
+            <p class="step__text">{{s.text}}</p>
+          </div>
+        </sc-for>
+      </div>
+      <div class="install__actions">
+        <a class="btn btn--primary" href="https://github.com/Fuwni/dynamic-island-windows/releases/latest">
+          <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#07080c" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"></path><path d="M7 11l5 5 5-5"></path><path d="M5 20h14"></path></svg>
+          Скачать Atoll
+        </a>
+        <span class="install__hint">Есть и портативная версия: распакуйте архив и запустите DynamicIsland.exe.</span>
+      </div>
+      <div class="info-grid">
+        <div class="info-card">
+          <p class="info-card__title">Требования</p>
+          <ul class="info-card__list">
+            <li>Windows 10 (версия 2004 и новее) или Windows 11, 64 бита</li>
+            <li>Microsoft Edge WebView2 Runtime для страницы «Чат». В Windows 11 он уже есть</li>
+            <li>Visual C++ Redistributable 2015–2022 (x64) для записи экрана</li>
+            <li>.NET ставить не нужно, всё уже внутри</li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <p class="info-card__title">Обновление и удаление</p>
+          <ul class="info-card__list">
+            <li>Остров сам сообщит о новой версии, обновление в один клик. Настройки сохраняются</li>
+            <li>Проверка обновлений: Настройки → Поведение → Обновления</li>
+            <li>Удаление за 10 секунд: Настройки → Поведение → «Удалить Atoll» или через «Установленные приложения» в Windows</li>
+            <li>Интерфейс на семи языках: русский, английский, украинский, испанский, немецкий, португальский и китайский</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ЧАСТЫЕ ВОПРОСЫ ===== -->
+  <section class="section">
+    <p class="eyebrow eyebrow--blue">Частые вопросы</p>
+    <h2 class="section__title section__title--lg">Если что-то пошло не так</h2>
+    <div class="card-grid card-grid--faq">
+      <sc-for list="{{faq}}" as="f" hint-placeholder-count="5">
+        <div class="card card--dark card--faq">
+          <h3 class="card__title">{{f.q}}</h3>
+          <p class="card__text">{{f.a}}</p>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- ===== ПОДВАЛ ===== -->
+  <footer class="site-footer">
+    <div class="site-footer__row">
+      <div class="site-footer__brand">
+        <span class="brand__mark brand__mark--small"><span class="brand__ring"><span class="brand__dot"></span></span></span>
+        <span class="site-footer__text">Atoll 1.6 · MIT License<br>Сделано с любовью к мелочам</span>
+      </div>
+      <div class="site-footer__links">
+        <a class="nav-link" href="https://github.com/Fuwni/dynamic-island-windows">GitHub</a>
+        <a class="nav-link" href="https://github.com/Fuwni/dynamic-island-windows/releases">Релизы</a>
+        <a class="nav-link" href="https://github.com/Fuwni/dynamic-island-windows/blob/main/CHANGELOG.md">Список изменений</a>
+        <a class="nav-link" href="https://github.com/Fuwni/dynamic-island-windows/issues">Сообщить об ошибке</a>
+      </div>
+    </div>
+    <p class="disclaimer">«Dynamic Island» — название Apple. Atoll не связан с Apple и не распространяется от её имени.</p>
+  </footer>
+
+</div>
+</x-dc>
+
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":6600}}'>
+/*
+  Логика страницы. Весь текст и данные списков лежат здесь, внешний вид — в style.css.
+  Интерактивна только демонстрация размера острова: ползунок хранит число в state.size.
+*/
+class Component extends DCLogic {
+  renderVals() {
+    // Текущий размер острова в процентах (по умолчанию 100)
+    const size = this.state && this.state.size ? this.state.size : 100;
+
+    // Строка настроек: переключатель включён или выключен
+    const setting = (label, on) => ({ label: label, state: on ? 'is-on' : 'is-off' });
+
+    // Тема: slug задаёт класс theme--<slug> в style.css, kind — светлая или тёмная плитка
+    const theme = (name, slug, light) => ({ name: name, slug: slug, kind: light ? 'is-light' : 'is-dark' });
+
+    return {
+      // ---- Ползунок размера ----
+      sizeValue: size,
+      sizeLabel: size,
+      sizeScale: (size / 100).toFixed(2),
+      onSize: (event) => {
+        const value = Number(event.target.value);
+        this.setState({ size: value });
+      },
+
+      // ---- Макет настроек в первом экране ----
+      settingsRows: [
+        setting('Раскрывать при наведении', false),
+        setting('Закрепить на месте (не перетаскивать)', true),
+        setting('Показывать Caps Lock', true),
+        setting('Показывать смену раскладки', true),
+        setting('Скрывать остров на скриншотах и демонстрации экрана', true),
+        setting('Прятать в играх и полноэкранном режиме', true)
+      ],
+
+      // ---- Чипы под первым экраном (tone = цвет точки из style.css) ----
+      heroChips: [
+        { label: 'Размер 80–130%', tone: 'green' },
+        { label: 'Закрепить', tone: 'rose' },
+        { label: 'Скрыть в программах', tone: 'amber' },
+        { label: 'Caps Lock и раскладка', tone: 'orange' },
+        { label: 'Заметки и капча', tone: 'purple' },
+        { label: 'VPN в один клик', tone: 'green' }
+      ],
+
+      // ---- Живые активности ----
+      activities: [
+        { title: 'Музыка', text: 'Обложка и эквалайзер. По желанию строка песни прямо в пилюле, как в караоке.', tone: 'pink' },
+        { title: 'Таймер, помодоро, секундомер', text: 'Кольцо прогресса и обратный отсчёт.', tone: 'amber' },
+        { title: 'Загрузки', text: 'Имя файла и скорость. Когда загрузка закончится, остров скажет.', tone: 'blue' },
+        { title: 'Календарь', text: '«Созвон · через 12 мин» и напоминание за 10 минут до события.', tone: 'green' },
+        { title: 'Discord', text: '«В канале» или «говорят» во время звонка.', tone: 'violet' },
+        { title: 'Не беспокоить', text: 'Показывает, сколько осталось тишины.', tone: 'gray' },
+        { title: 'Игровой режим', text: 'CPU, GPU и RAM вместо полного скрытия. Если нужно, пилюля показывает FPS игры.', tone: 'red' },
+        { title: 'Микрофон и камера', text: 'Оранжевая и зелёная точки, как на iPhone, когда что-то их использует.', tone: 'orange' },
+        { title: 'Сообщения', text: 'Telegram, Discord и Viber всплывают на острове со счётчиком непрочитанных.', tone: 'green' },
+        { title: 'Claude Code и Codex', text: 'Запросы разрешений с кнопками «Разрешить» и «Запретить». Когда агент закончил, остров сообщит.', tone: 'coral' }
+      ],
+
+      // ---- Что нового ----
+      new16: [
+        { title: 'Размер 80–130%.', text: 'Остров, его тень и окно масштабируются вместе.' },
+        { title: 'Закрепить на месте.', text: 'Остров нельзя случайно утащить или смахнуть.' },
+        { title: 'Скрытие в выбранных программах.', text: 'Укажите игру в окне или приложение для звонков, и остров спрячется, пока они на переднем плане.' },
+        { title: 'Скрывать на скриншотах и демонстрации экрана.', text: 'Включено по умолчанию. Если выключить, остров будет виден в записи и в Zoom или Discord, но матовое стекло станет сплошным.' },
+        { title: 'Caps Lock и раскладка.', text: 'Короткое уведомление, когда Caps Lock включается или выключается и когда меняется язык ввода. Каждое можно отключить.' },
+        { title: 'Заметки.', text: 'Длинный текст вставляется целиком, у каждой заметки есть кнопки копирования и удаления.' },
+        { title: 'VPN в один клик.', text: 'Если в Windows нет VPN-профиля, откроется ваше приложение: Happ, Hiddify, v2rayN, AmneziaVPN, Outline, WireGuard и другие.' }
+      ],
+      new15: [
+        { title: 'Плавнее.', text: 'Открытие и закрытие идут ровно в 60 кадров, перетаскивание не отстаёт от мыши. Для слабых ПК есть облегчённая графика, она включается сама, если анимации тормозят.' },
+        { title: 'Музыка.', text: 'Волна под треком, повтор в любом плеере, избранное с сердечком и поддержка приложения Яндекс Музыка.' },
+        { title: 'Несколько активностей сразу.', text: 'Колесо мыши над пилюлей переключает звонок, музыку и таймер.' },
+        { title: 'Ctrl + Alt + O открывает остров.', text: 'Сочетание можно сменить. Esc или клик в сторону сворачивает его.' },
+        { title: '12 тем, галерея и своё фото.', text: 'Готовые темы, онлайн-галерея и собственное фото в качестве фона острова.' },
+        { title: 'Codex и 9 нейросетей.', text: 'Запросы Codex CLI на острове, как у Claude Code. В чате девять ассистентов.' },
+        { title: 'Безопаснее.', text: 'Пароли из менеджеров не попадают в историю буфера, а встроенный чат не скачивает программы и скрипты.' }
+      ],
+
+      // ---- Десять страниц развёрнутого острова ----
+      pages: [
+        { title: 'Главная', text: 'Скриншот области или экрана, текст с экрана, QR-код, пипетка, запись экрана. Мини-плеер, погода и ваши любимые приложения одной строкой.' },
+        { title: 'Музыка', text: 'Любой плеер из окна громкости Windows: Spotify, Яндекс Музыка, браузеры, AIMP. Перемотка, громкость плеера, повтор, избранное и слова песен из LRCLIB.' },
+        { title: 'Погода', text: 'Впишите город: компас ветра, влажность, давление, солнце на дуге, УФ, осадки и прогноз по часам. Ключи не нужны.' },
+        { title: 'Чат', text: 'ChatGPT, Claude, Gemini, DeepSeek, Grok, Perplexity, Copilot, Le Chat и Qwen прямо в острове.' },
+        { title: 'Таймер', text: 'Таймер, помодоро, который умеет включать «Не беспокоить», и секундомер.' },
+        { title: 'Буфер', text: 'Последние 30 скопированных текстов, картинок и файлов. Полка для файлов и инструменты текста: раскладка, регистр, транслит. Хранится только в памяти.' },
+        { title: 'Заметки', text: 'Enter сохраняет, Shift + Enter переносит строку. Длинную заметку можно открыть целиком.' },
+        { title: 'Календарь', text: 'Напоминания словами: «18:30», «завтра 9:00», «через 20 мин». Google, Outlook и Яндекс Календарь подключаются по секретной ICS-ссылке.' },
+        { title: 'Система', text: 'Нагрузка CPU, GPU и RAM, Wi-Fi, Bluetooth, режим «в самолёте», VPN, батарея, блокировка, сон, перезагрузка и «Не беспокоить» на 30 минут, час или два.' },
+        { title: 'Настройки', text: 'Внешний вид, персонаж, главная, поведение, действия и ИИ-агенты. Ещё командная строка по Alt + Space: программы, сайты, поиск, действия.' }
+      ],
+
+      // ---- 12 тем (цвета каждой темы описаны в style.css) ----
+      themes: [
+        theme('Полночь', 'midnight', false),
+        theme('Графит', 'graphite', false),
+        theme('Океан', 'ocean', false),
+        theme('Лес', 'forest', false),
+        theme('Закат', 'sunset', false),
+        theme('Роза', 'rose', false),
+        theme('Лаванда', 'lavender', false),
+        theme('Неон', 'neon', false),
+        theme('Снег', 'snow', true),
+        theme('Песок', 'sand', true),
+        theme('Мята', 'mint', true),
+        theme('Небо', 'sky', true)
+      ],
+
+      // ---- Персонажи и эмоции ----
+      characters: [
+        { name: 'Глаза' }, { name: 'Кот' }, { name: 'Призрак' }, { name: 'Робот' }, { name: 'Рыба' },
+        { name: 'Планета' }, { name: 'Слайм' }, { name: 'Пульс' }, { name: 'Кролик' }, { name: 'Сова' },
+        { name: 'Динозавр' }, { name: 'Звезда' }, { name: 'Облако' }, { name: 'Claude' }, { name: 'Claude Code' }
+      ],
+      emotions: [
+        { name: 'Влюблённость' }, { name: 'Злость' }, { name: 'Удивление' }, { name: 'Грусть' },
+        { name: 'Головокружение' }, { name: 'Смех' }, { name: 'Крутые очки' }
+      ],
+
+      // ---- Горячие клавиши ----
+      shortcuts: [
+        { action: 'Открыть остров', keys: 'Ctrl + Alt + O' },
+        { action: 'Показать или спрятать остров', keys: 'Ctrl + Alt + I' },
+        { action: 'Скриншот области', keys: 'Ctrl + Alt + S' },
+        { action: 'Начать или остановить запись экрана', keys: 'Ctrl + Alt + R' },
+        { action: 'Тёмная или светлая тема', keys: 'Ctrl + Alt + T' },
+        { action: 'Командная строка', keys: 'Alt + Space' }
+      ],
+
+      // ---- Какие данные уходят в сеть ----
+      privacyRows: [
+        { feature: 'Погода', where: 'open-meteo.com', what: 'Город или координаты' },
+        { feature: 'Слова песен', where: 'lrclib.net', what: 'Название трека и исполнитель' },
+        { feature: 'Перевод в редакторе скриншотов', where: 'translate.googleapis.com', what: 'Распознанный текст, только когда вы нажали «Перевести»' },
+        { feature: 'Чат', where: 'сайт выбранного чата', what: 'То, что вы сами пишете' },
+        { feature: 'Календарь', where: 'ваша ICS-ссылка', what: '—' }
+      ],
+
+      // ---- Установка ----
+      steps: [
+        { n: '1', title: 'Скачайте установщик', text: 'Откройте страницу релизов на GitHub и скачайте файл Atoll-…-setup.exe.' },
+        { n: '2', title: 'Запустите его', text: 'Программа ставится только для вас, без прав администратора, появляется в меню «Пуск» и по желанию запускается вместе с Windows.' },
+        { n: '3', title: 'Разрешите запуск один раз', text: 'Windows может показать синее окно «Защитила ваш компьютер», потому что у программы нет платного сертификата. Нажмите «Подробнее» и «Выполнить в любом случае».' }
+      ],
+
+      // ---- Частые вопросы ----
+      faq: [
+        { q: 'Синее окно «Windows защитила ваш компьютер»', a: 'Программа не подписана платным сертификатом. Нажмите «Подробнее», затем «Выполнить в любом случае». Это нужно сделать один раз.' },
+        { q: 'Остров не виден в игре', a: 'Так задумано. Включите игровой режим в настройках, чтобы видеть CPU, GPU и RAM или FPS. Поверх игр в «эксклюзивном полноэкранном» режиме ничего показать нельзя, переключите игру в «оконный без рамки».' },
+        { q: 'Острова нет на моих скриншотах', a: 'По умолчанию остров прячется от захвата экрана. В настройках поведения есть переключатель. Когда остров виден на скриншотах, матовое стекло становится сплошным.' },
+        { q: 'Не получается войти в Gemini или Claude через Google', a: 'Google иногда запрещает вход во встроенных окнах. Войдите по почте или откройте чат в обычном браузере кнопкой со стрелкой.' },
+        { q: 'Сочетание клавиш не работает', a: 'Скорее всего, сочетание уже занято другой программой. Причина записана в журнале ошибок: %LOCALAPPDATA%\\DynamicIsland\\log.txt.' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>
