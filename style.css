@@ -1296,6 +1296,160 @@ input:focus-visible {
 }
 
 
+/* 13. Версия 1.7: сезоны, Discord-островок, перетаскивание, релиз ------- */
+.section--tight {
+  padding-top: 96px;
+}
+.dot--ice {
+  background: #bcd6ff;
+}
+
+/* Скриншот сезонных тем и карточки сезонов */
+.seasons__shot {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin-top: 28px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.card-grid--seasons {
+  margin-top: 28px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+/* Discord отдельным островком */
+.discord {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 40px 56px;
+}
+.discord__text {
+  flex: 1 1 360px;
+  min-width: 0;
+}
+.discord__stage {
+  flex: 1 1 360px;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  padding: 24px;
+  box-sizing: border-box;
+  border-radius: 26px;
+  background:
+    radial-gradient(420px 220px at 50% 0%, rgba(139, 108, 255, 0.2), transparent 70%),
+    #0b0c11;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+.discord__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+.mini {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 10px 8px 8px;
+  border-radius: 999px;
+  background: #000000;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 0 1px rgba(139, 108, 255, 0.22), 0 14px 34px rgba(0, 0, 0, 0.55);
+}
+.mini__avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  background: var(--tone-violet);
+  border: 2px solid var(--green);
+  font-size: 14px;
+  font-weight: 800;
+}
+.mini__info {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+.mini__name {
+  font-size: 13px;
+  font-weight: 800;
+}
+.mini__time {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--tone-gray);
+  font-variant-numeric: tabular-nums;
+}
+.mini__mic {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #26272b;
+}
+
+/* Перетаскивание без лага */
+.drag {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 32px 56px;
+}
+.drag__stat {
+  flex: 0 1 260px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.drag__num {
+  font-size: clamp(72px, 10vw, 112px);
+  line-height: 1;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  background: linear-gradient(180deg, #ffe2a8, var(--amber));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.drag__cap {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-dim);
+}
+.drag__text {
+  flex: 1 1 360px;
+  min-width: 0;
+}
+
+/* Карточка релиза 1.7: на всю ширину, список в несколько колонок */
+.release--violet {
+  background: linear-gradient(160deg, rgba(139, 108, 255, 0.14), rgba(255, 255, 255, 0.03) 55%);
+  border: 1px solid rgba(139, 108, 255, 0.32);
+}
+.release--violet .release__slogan {
+  color: #b49bff;
+}
+.release--wide {
+  flex-basis: 100%;
+}
+.release--wide .release__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px 36px;
+}
+
+
 /* 12. Анимации и доступность -------------------------------------------- */
 /* Лёгкое «парение» макетов в первом экране.
    Движение медленное и небольшое (4–5 px), а will-change выносит элемент

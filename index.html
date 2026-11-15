@@ -40,9 +40,9 @@
     <div class="hero__layout">
 
       <div class="hero__text">
-        <div class="badge"><span class="badge__dot"></span>Обновление 1.6 · Dynamic Island для Windows</div>
+        <div class="badge"><span class="badge__dot"></span>Обновление 1.7 · Dynamic Island для Windows</div>
         <h1 class="hero__title">Atoll</h1>
-        <p class="hero__tagline"><span class="tagline--gray">Твой размер.</span> <span class="tagline--green">Твои</span> <span class="tagline--amber">правила.</span></p>
+        <p class="hero__tagline"><span class="tagline--gray">Остров стал</span> <span class="tagline--green">умнее</span> <span class="tagline--gray">и</span> <span class="tagline--amber">красивее.</span></p>
         <p class="hero__lead">Остров как на iPhone, только на компьютере. Музыка со словами песен, погода, таймеры, скриншоты с распознаванием текста, чат с нейросетями, заметки, календарь и маленький персонаж, который живёт в пилюле.</p>
         <div class="hero__actions">
           <a class="btn btn--primary" href="https://github.com/Fuwni/dynamic-island-windows/releases/latest">
@@ -114,6 +114,80 @@
     </div>
   </section>
 
+  <!-- ===== НОВОЕ В 1.7: ТЕМЫ-СЕЗОНЫ ===== -->
+  <section class="section section--tight" id="new">
+    <div class="feature-box">
+      <p class="eyebrow eyebrow--rose">Новое в 1.7</p>
+      <h2 class="section__title section__title--md">Темы-сезоны: внутри острова живёт целая сцена</h2>
+      <p class="feature-box__text">Сцены живут по краям и не мешают тексту, а нагрузка почти нулевая.</p>
+      <img class="seasons__shot" src="./assets/7fdd0422f3f6375fddb4a835360e77a6.png" width="429" height="90" alt="Сезонные темы Atoll: Весна, Лето, Осень, Зима">
+      <div class="card-grid card-grid--seasons">
+        <sc-for list="{{seasons}}" as="s" hint-placeholder-count="4">
+          <div class="card card--dark">
+            <div class="card__head"><span class="dot dot--{{s.tone}}"></span><h3 class="card__title">{{s.title}}</h3></div>
+            <p class="card__text">{{s.text}}</p>
+          </div>
+        </sc-for>
+      </div>
+      <p class="feature-box__note">Где: Настройки → Внешний вид → Темы</p>
+    </div>
+  </section>
+
+  <!-- ===== НОВОЕ В 1.7: УМНЫЙ ОСТРОВ ===== -->
+  <section class="section" id="smart">
+    <p class="eyebrow eyebrow--green">Новое в 1.7</p>
+    <h2 class="section__title section__title--lg">Умный остров подстраивается под то, что вы делаете</h2>
+    <div class="card-grid card-grid--wide">
+      <sc-for list="{{smart}}" as="s" hint-placeholder-count="4">
+        <div class="card card--dark card--page">
+          <div class="card__head"><span class="dot dot--{{s.tone}}"></span><h3 class="card__title">{{s.title}}</h3></div>
+          <p class="card__text">{{s.text}}</p>
+        </div>
+      </sc-for>
+    </div>
+    <p class="note">Привычки хранятся только у вас на ПК, никуда не отправляются.</p>
+  </section>
+
+  <!-- ===== НОВОЕ В 1.7: DISCORD ОТДЕЛЬНЫМ ОСТРОВКОМ ===== -->
+  <section class="section" id="discord">
+    <div class="feature-box discord">
+      <div class="discord__text">
+        <p class="eyebrow eyebrow--violet">Новое в 1.7</p>
+        <h2 class="section__title section__title--md">Discord отдельным островком</h2>
+        <p class="feature-box__text">Во время звонка справа от острова появляется маленький островок: кто говорит, сколько длится звонок и кнопка микрофона. А основной остров дальше показывает музыку или время.</p>
+      </div>
+      <div class="discord__stage">
+        <div class="discord__row">
+          <div class="island">
+            <span class="island__face" aria-hidden="true"><span class="island__eye"></span><span class="island__eye"></span></span>
+            <span class="island__cover" aria-hidden="true"></span>
+            <span class="island__time">21:16</span>
+            <span class="island__bars" aria-hidden="true"><span class="island__bar"></span><span class="island__bar"></span><span class="island__bar"></span><span class="island__bar"></span></span>
+          </div>
+          <div class="mini">
+            <span class="mini__avatar" aria-hidden="true">А</span>
+            <span class="mini__info"><span class="mini__name">Алекс</span><span class="mini__time">Звонок 12:34</span></span>
+            <span class="mini__mic" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f4f5f7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"></rect><path d="M5 11a7 7 0 0 0 14 0"></path><path d="M12 18v3"></path></svg>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== НОВОЕ В 1.7: ПЕРЕТАСКИВАНИЕ БЕЗ ЛАГА ===== -->
+  <section class="section">
+    <div class="feature-box drag">
+      <div class="drag__stat"><span class="drag__num">≈3×</span><span class="drag__cap">меньше отставание</span></div>
+      <div class="drag__text">
+        <p class="eyebrow eyebrow--amber">Новое в 1.7</p>
+        <h2 class="section__title section__title--md">Перетаскивание без лага</h2>
+        <p class="feature-box__text">Вы писали, что остров отстаёт от мышки, и это исправлено. Теперь он едет ровно за курсором, отставание стало примерно в 3 раза меньше.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== ДЕМО РАЗМЕРА ОСТРОВА ===== -->
   <section class="section">
     <div class="feature-box size-demo">
@@ -164,10 +238,18 @@
   </section>
 
   <!-- ===== ЧТО НОВОГО ===== -->
-  <section class="section" id="new">
+  <section class="section" id="changelog">
     <p class="eyebrow eyebrow--violet">Обновления</p>
     <h2 class="section__title section__title--lg">Что нового</h2>
     <div class="release-grid">
+      <div class="release release--violet release--wide">
+        <div class="release__head"><span class="release__version">1.7</span><span class="release__slogan">Остров стал умнее и красивее.</span></div>
+        <ul class="release__list">
+          <sc-for list="{{new17}}" as="n" hint-placeholder-count="5">
+            <li class="release__item"><strong>{{n.title}}</strong> {{n.text}}</li>
+          </sc-for>
+        </ul>
+      </div>
       <div class="release release--green">
         <div class="release__head"><span class="release__version">1.6</span><span class="release__slogan">Твой размер. Твои правила.</span></div>
         <ul class="release__list">
@@ -210,7 +292,7 @@
       <div class="themes__intro">
         <p class="eyebrow eyebrow--blue">Внешний вид</p>
         <h2 class="section__title section__title--lg">12 тем и своё фото</h2>
-        <p class="section__lead">Готовые темы меняют цвет, акцент и свечение. Есть онлайн-галерея тем, а фоном острова можно поставить собственную фотографию. Матовое стекло настраивается по оттенку.</p>
+        <p class="section__lead">Готовые темы меняют цвет, акцент и свечение. Есть онлайн-галерея тем, а фоном острова можно поставить собственную фотографию. Матовое стекло настраивается по оттенку. С версии 1.7 добавились четыре сезонные темы с живыми сценами: весна, лето, осень и зима.</p>
         <p class="note">Тёмная и светлая тема переключаются сочетанием Ctrl + Alt + T.</p>
       </div>
       <div class="themes__grid">
@@ -353,7 +435,7 @@
     <div class="site-footer__row">
       <div class="site-footer__brand">
         <span class="brand__mark brand__mark--small"><span class="brand__ring"><span class="brand__dot"></span></span></span>
-        <span class="site-footer__text">Atoll 1.6 · MIT License<br>Сделано с любовью к мелочам</span>
+        <span class="site-footer__text">Atoll 1.7 · MIT License<br>Сделано с любовью к мелочам</span>
       </div>
       <div class="site-footer__links">
         <a class="nav-link" href="https://github.com/Fuwni/dynamic-island-windows">GitHub</a>
@@ -406,12 +488,12 @@ class Component extends DCLogic {
 
       // ---- Чипы под первым экраном (tone = цвет точки из style.css) ----
       heroChips: [
-        { label: 'Размер 80–130%', tone: 'green' },
-        { label: 'Закрепить', tone: 'rose' },
-        { label: 'Скрыть в программах', tone: 'amber' },
-        { label: 'Caps Lock и раскладка', tone: 'orange' },
-        { label: 'Заметки и капча', tone: 'purple' },
-        { label: 'VPN в один клик', tone: 'green' }
+        { label: 'Темы-сезоны', tone: 'pink' },
+        { label: 'Умный остров', tone: 'green' },
+        { label: 'Discord отдельным островком', tone: 'violet' },
+        { label: 'Перетаскивание без лага', tone: 'amber' },
+        { label: 'Размер 80–130%', tone: 'blue' },
+        { label: 'Закрепить', tone: 'rose' }
       ],
 
       // ---- Живые активности ----
@@ -420,7 +502,7 @@ class Component extends DCLogic {
         { title: 'Таймер, помодоро, секундомер', text: 'Кольцо прогресса и обратный отсчёт.', tone: 'amber' },
         { title: 'Загрузки', text: 'Имя файла и скорость. Когда загрузка закончится, остров скажет.', tone: 'blue' },
         { title: 'Календарь', text: '«Созвон · через 12 мин» и напоминание за 10 минут до события.', tone: 'green' },
-        { title: 'Discord', text: '«В канале» или «говорят» во время звонка.', tone: 'violet' },
+        { title: 'Discord', text: 'Во время звонка справа от острова появляется отдельный островок: кто говорит, сколько длится звонок и кнопка микрофона.', tone: 'violet' },
         { title: 'Не беспокоить', text: 'Показывает, сколько осталось тишины.', tone: 'gray' },
         { title: 'Игровой режим', text: 'CPU, GPU и RAM вместо полного скрытия. Если нужно, пилюля показывает FPS игры.', tone: 'red' },
         { title: 'Микрофон и камера', text: 'Оранжевая и зелёная точки, как на iPhone, когда что-то их использует.', tone: 'orange' },
@@ -428,7 +510,30 @@ class Component extends DCLogic {
         { title: 'Claude Code и Codex', text: 'Запросы разрешений с кнопками «Разрешить» и «Запретить». Когда агент закончил, остров сообщит.', tone: 'coral' }
       ],
 
+      // ---- Темы-сезоны (1.7) ----
+      seasons: [
+        { title: 'Весна', text: 'Внизу покачиваются цветы, падают лепестки.', tone: 'pink' },
+        { title: 'Лето', text: 'Море с волнами, закат и пляжный зонтик, который время от времени уносит ветром.', tone: 'blue' },
+        { title: 'Осень', text: 'Кружатся разноцветные листья, тёплый свет и чашка чая с паром.', tone: 'orange' },
+        { title: 'Зима', text: 'Уютное окно, за ним идёт снег, на подоконнике мерцает свеча.', tone: 'ice' }
+      ],
+
+      // ---- Умный остров (1.7) ----
+      smart: [
+        { title: 'Открывается сразу на нужном', text: 'Идёт таймер, и остров открывается на таймере. Вы в звонке, и он открывается на звонке. Только что что-то скопировали, и он покажет буфер.', tone: 'green' },
+        { title: 'Запоминает ваши привычки', text: 'Видит, какие вкладки вы открываете в какое время, и сам их предлагает. Утром погода, вечером музыка, как у вас.', tone: 'violet' },
+        { title: 'Не мешает, пока вы печатаете', text: 'Остров не выскакивает под курсором, а сообщения ждут паузы.', tone: 'amber' },
+        { title: 'Бережёт ноутбук', text: 'Когда заряд падает до 20%, остров сам включает облегчённую графику.', tone: 'blue' }
+      ],
+
       // ---- Что нового ----
+      new17: [
+        { title: 'Темы-сезоны.', text: 'Весна, лето, осень и зима: внутри острова живёт целая сцена, а нагрузка почти нулевая. Настройки → Внешний вид → Темы.' },
+        { title: 'Умный остров.', text: 'Открывается сразу на нужном: таймер, звонок или буфер. Запоминает, какие вкладки вы открываете в какое время, и сам их предлагает.' },
+        { title: 'Не мешает при печати.', text: 'Пока вы печатаете, остров не выскакивает под курсором, а сообщения ждут паузы. На ноутбуке при 20% заряда он сам включает облегчённую графику.' },
+        { title: 'Discord отдельным островком.', text: 'Во время звонка справа появляется маленький островок: кто говорит, сколько длится звонок и кнопка микрофона.' },
+        { title: 'Перетаскивание без лага.', text: 'Остров едет ровно за курсором, отставание стало примерно в 3 раза меньше.' }
+      ],
       new16: [
         { title: 'Размер 80–130%.', text: 'Остров, его тень и окно масштабируются вместе.' },
         { title: 'Закрепить на месте.', text: 'Остров нельзя случайно утащить или смахнуть.' },

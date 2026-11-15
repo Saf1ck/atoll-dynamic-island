@@ -13,8 +13,16 @@ rather than copy wholesale.
   template + a small logic class). The values to replicate live in its
   inline `style="…"` attributes and the `<helmet><style>` block.
 - `style.css` — referenced resource
+- `assets/` — files uploaded to the design (images, fonts, media)
 - `support.js`, `vendor/react*.js` — the runtime that renders the
   component in a browser; not part of the design.
+
+## Uploaded files
+
+Images, fonts and media uploaded to the design are written once each under
+`assets/` — 1 in this export — and the exported files refer to them there. A
+reference a script puts together while the page runs (for example
+`"/_blob/" + id`) is not rewritten and does not load from this folder.
 
 ## Viewing
 
